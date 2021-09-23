@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import Sidebar from "./components/Sidebar";
+import GlobalStyles from "./shared/GlobalStyles";
+import Theme from "./shared/Theme";
 import MainArea from "./views/MainArea";
 
 //----------Styled Components------------
 
 const AppContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
   min-height: 100vh;
 `;
 
@@ -17,11 +19,16 @@ const AppContainer = styled.div`
 function App() {
   return (
     <Router>
-      <AppContainer>
-        <Switch>
-          <Route exact path="/" component={MainArea} />
-        </Switch>
-      </AppContainer>
+      <ThemeProvider theme={Theme}>
+        <AppContainer>
+          <GlobalStyles />
+          <Sidebar />
+
+          <Switch>
+            <Route exact path="/" component={MainArea} />
+          </Switch>
+        </AppContainer>
+      </ThemeProvider>
     </Router>
   );
 }
