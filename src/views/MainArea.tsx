@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../components/supabase";
+import DataTable from "../shared/DataTable";
 import { Product } from "../types";
 
 function MainArea() {
-  const [table, setTable] = useState<Product[]>([]);
+  const [data, setData] = useState<Product[]>([]);
 
   useEffect(() => {
     async function getTable() {
@@ -11,7 +12,7 @@ function MainArea() {
         const { data } = await supabase.from("products").select();
 
         if (data) {
-          setTable(data);
+          setData(data);
         }
       } catch (error) {
         console.log("error", error);
@@ -21,7 +22,11 @@ function MainArea() {
     getTable();
   }, []);
 
-  return <h1>Hello, World!</h1>;
+  return (
+    <div>
+      <DataTable data={data} />
+    </div>
+  );
 }
 
 export default MainArea;
