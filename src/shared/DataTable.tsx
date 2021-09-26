@@ -26,13 +26,13 @@ function DataTable({ data }: { data: Product[] }) {
     var header = "";
     var body = "";
 
-    Object.keys(data[0] || []).map((key, value) => {
+    Object.keys(data[0] || []).map((key) => {
       header += `<th> ${key} </th>`;
     });
 
     data.forEach((item) => {
       body += "<tr>";
-      Object.keys(item).map((key, value) => {
+      Object.values(item).map((value) => {
         body += `<td> ${value} </td>`;
       });
       body += "</tr>";
