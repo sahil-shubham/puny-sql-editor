@@ -26,6 +26,7 @@ function DataTable({ data }: { data: Product[] }) {
     var header = "";
     var body = "";
 
+    // TODO: the following html string doesn't contain styled components classnames
     Object.keys(data[0] || []).map((key) => {
       header += `<th> ${key} </th>`;
     });
