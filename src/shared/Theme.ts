@@ -1,5 +1,6 @@
 export const lightTheme: ThemeType = {
   backgroundColor: "#f5f5f5",
+  color: "#2b2f33",
   fontFamily: "'Manrope', sans-serif",
 
   sidebar: {
@@ -12,6 +13,7 @@ export const lightTheme: ThemeType = {
 
 export const darkTheme: ThemeType = {
   backgroundColor: "#111315",
+  color: "#fcfcfc",
   fontFamily: "'Manrope', sans-serif",
 
   sidebar: {
@@ -24,6 +26,7 @@ export const darkTheme: ThemeType = {
 
 type ThemeType = {
   backgroundColor: string;
+  color: string;
   fontFamily: string;
 
   sidebar: {
