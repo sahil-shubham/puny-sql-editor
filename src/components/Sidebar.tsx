@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Database, Home, Moon, Sun, Terminal } from "react-feather";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Database,
+  Home,
+  Moon,
+  Sun,
+  Terminal,
+} from "react-feather";
 import styled from "styled-components";
 
 //----------------Styled Components---------------
@@ -9,6 +17,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 
   max-height: 95vh;
   position: sticky;
@@ -30,18 +39,19 @@ const List = styled.ul`
 `;
 
 const Icon = styled.svg`
-  margin: 1rem;
+  margin: 0.5rem;
   color: ${(props) => props.theme.sidebar.color};
 `;
 
+// TODO: inline optional props not working for some reason
 const ListItem = styled.li`
   display: flex;
   align-items: center;
   white-space: nowrap;
 
   position: relative;
-  margin: 1rem;
-  padding: 0.25rem;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 10px;
   color: ${(props) => props.theme.sidebar.color};
@@ -83,12 +93,32 @@ const ThemeChanger = styled.div`
 
   border-radius: 50%;
   margin: 1rem;
-  padding: 0.1rem;
+  padding: 0.3rem;
   cursor: pointer;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: ${(props) => props.theme.sidebar.themeSwitcherBackground};
 
   svg {
-    color: ${(props) => props.theme.sidebar.color};
+    color: ${(props) => props.theme.color};
+  }
+`;
+
+const Expander = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  right: -0.8rem;
+  top: 6%;
+
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: ${(props) => props.theme.sidebar.themeSwitcherBackground};
+
+  ${Icon} {
+    margin: 0.2rem;
   }
 `;
 //================================================
@@ -121,19 +151,21 @@ function Sidebar({
   setTheme: (e: string) => void;
 }) {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [expandSidebar, setExpandSidebar] = useState(false);
+
   return (
     <Container>
       <List>
         <ListItem>
-          <Icon as={Home} />
+          <Icon as={Home} /> {expandSidebar ? "Home" : ""}
         </ListItem>
 
         <ListItem onClick={() => setShowQueryRunner(!showQueryRunner)}>
-          <Icon as={Terminal} />
+          <Icon as={Terminal} /> {expandSidebar ? "Query" : ""}
         </ListItem>
 
         <ListItem onClick={() => setShowDropdown(!showDropdown)}>
-          <Icon as={Database} />
+          <Icon as={Database} /> {expandSidebar ? "Tables" : ""}
           {showDropdown && (
             <NestedList>
               {tables.map((table) => (
@@ -148,6 +180,10 @@ function Sidebar({
           )}
         </ListItem>
       </List>
+
+      <Expander onClick={() => setExpandSidebar(!expandSidebar)}>
+        {expandSidebar ? <Icon as={ChevronLeft} /> : <Icon as={ChevronRight} />}
+      </Expander>
 
       <ThemeChanger
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
