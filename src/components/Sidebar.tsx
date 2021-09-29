@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Database, Home, Terminal } from "react-feather";
 import styled from "styled-components";
 
@@ -16,7 +16,7 @@ const Container = styled.div`
 
   margin: 1rem;
   border-radius: 10px;
-  background-color: #14191f;
+  background-color: #fff;
 `;
 
 const List = styled.ul`
@@ -38,12 +38,16 @@ const ListItem = styled.li`
   align-items: center;
   white-space: nowrap;
 
+  position: relative;
   margin: 1rem;
+  padding: 0.25rem;
   cursor: pointer;
   border-radius: 10px;
+  color: #969799;
 
   &:hover {
     background-color: #5f6164;
+    color: #f5f5f5;
 
     ${Icon} {
       color: #f5f5f5;
@@ -51,9 +55,50 @@ const ListItem = styled.li`
   }
 `;
 
+const NestedList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5rem;
+  left: 2rem;
+
+  list-style-type: none;
+  padding: 1rem;
+
+  border-radius: 10px;
+  background-color: #14191f;
+
+  ${ListItem} {
+    margin: 0.5rem 0.25rem;
+    padding: 0.5rem 1rem;
+  }
+`;
 //================================================
 
-function Sidebar() {
+const tables = [
+  {
+    name: "suppliers",
+  },
+  {
+    name: "products",
+  },
+  {
+    name: "shippers",
+  },
+];
+
+function Sidebar({
+  selectedTable,
+  setSelectedTable,
+  showQueryRunner,
+  setShowQueryRunner,
+}: {
+  selectedTable: string;
+  setSelectedTable: (e: string) => void;
+  showQueryRunner: boolean;
+  setShowQueryRunner: (e: boolean) => void;
+}) {
+  const [showDropdown, setShowDropdown] = useState(false);
   return (
     <Container>
       <List>
@@ -61,12 +106,24 @@ function Sidebar() {
           <Icon as={Home} />
         </ListItem>
 
-        <ListItem>
-          <Icon as={Database} />
+        <ListItem onClick={() => setShowQueryRunner(!showQueryRunner)}>
+          <Icon as={Terminal} />
         </ListItem>
 
-        <ListItem>
-          <Icon as={Terminal} />
+        <ListItem onClick={() => setShowDropdown(!showDropdown)}>
+          <Icon as={Database} />
+          {showDropdown && (
+            <NestedList>
+              {tables.map((table) => (
+                <ListItem
+                  key={table.name}
+                  onClick={() => setSelectedTable(table.name)}
+                >
+                  {table.name}
+                </ListItem>
+              ))}
+            </NestedList>
+          )}
         </ListItem>
       </List>
     </Container>

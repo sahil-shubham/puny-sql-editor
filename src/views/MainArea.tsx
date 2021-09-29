@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import QueryRunner from "../components/QueryRunner";
 import supabase from "../components/supabase";
 import DataTable from "../shared/DataTable";
-import { Product } from "../types";
+import { Product, Shipper, Supplier } from "../types";
 
-function MainArea() {
-  const [data, setData] = useState<Product[]>([]);
+function MainArea({
+  tableName,
+  showQueryRunner,
+}: {
+  tableName: string;
+  showQueryRunner: boolean;
+}) {
+  const [data, setData] = useState<Product[] | Shipper[] | Supplier[]>([]);
 
   useEffect(() => {
     async function getTable() {
       try {
-        const { data } = await supabase.from("products").select("*");
+        const { data } = await supabase.from(tableName).select("*");
 
         if (data) {
           setData(data);
@@ -21,12 +27,12 @@ function MainArea() {
     }
 
     getTable();
-  }, []);
+  }, [tableName]);
 
   return (
     <div>
       <DataTable data={data} />
-      <QueryRunner />
+      {showQueryRunner && <QueryRunner />}
     </div>
   );
 }

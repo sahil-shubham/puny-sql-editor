@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Product } from "../types";
+import { Product, Shipper, Supplier } from "../types";
 
 //-----------Styled Components------------------
 
@@ -18,7 +18,7 @@ const Cell = styled.td``;
 
 //==============================================
 
-function DataTable({ data }: { data: Product[] }) {
+function DataTable({ data }: { data: Product[] | Shipper[] | Supplier[] }) {
   const [columns, setColumns] = useState("");
   const [rows, setRows] = useState("");
 

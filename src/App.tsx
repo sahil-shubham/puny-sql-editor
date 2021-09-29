@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import Sidebar from "./components/Sidebar";
@@ -17,15 +17,28 @@ const AppContainer = styled.div`
 //======================================
 
 function App() {
+  const [selectedTable, setSelectedTable] = useState("products");
+  const [showQueryRunner, setShowQueryRunner] = useState(false);
+
   return (
     <Router>
       <ThemeProvider theme={Theme}>
         <AppContainer>
           <GlobalStyles />
-          <Sidebar />
+          <Sidebar
+            selectedTable={selectedTable}
+            setSelectedTable={setSelectedTable}
+            showQueryRunner={showQueryRunner}
+            setShowQueryRunner={setShowQueryRunner}
+          />
 
           <Switch>
-            <Route exact path="/" component={MainArea} />
+            <Route exact path="/">
+              <MainArea
+                tableName={selectedTable}
+                showQueryRunner={showQueryRunner}
+              />
+            </Route>
           </Switch>
         </AppContainer>
       </ThemeProvider>
