@@ -8,6 +8,11 @@ export const lightTheme: ThemeType = {
     color: "#898d90",
     hoverBackground: "#efefef",
     hoverColor: "#2b2f33",
+    themeSwitcherBackground: "#b4e4c9",
+  },
+  button: {
+    backgroundColor: "#b4e4c9",
+    color: "#111",
   },
 };
 
@@ -21,6 +26,12 @@ export const darkTheme: ThemeType = {
     color: "#85898f",
     hoverBackground: "#272a30",
     hoverColor: "#fcfcfc",
+    themeSwitcherBackground: "#b4e4c9",
+  },
+
+  button: {
+    backgroundColor: "#b4e4c9",
+    color: "#111",
   },
 };
 
@@ -35,6 +46,12 @@ type ThemeType = {
 
     hoverBackground: string;
     hoverColor: string;
+    themeSwitcherBackground: string;
+  };
+
+  button: {
+    backgroundColor: string;
+    color: string;
   };
 };
 
