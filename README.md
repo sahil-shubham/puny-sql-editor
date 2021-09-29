@@ -1,25 +1,53 @@
-# Atlan Frontend Task
+# Puny SQL Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A SQL Editor worthy of its name, it's puny.
 
-## Available Scripts
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c807a36f-535d-41db-b1b3-36d67a070b66/deploy-status)](https://app.netlify.com/sites/puny-sql-editor/deploys)
 
-In the project directory, you can run:
+```
+  NOTE: This project was made as a frontend interview task
+```
 
-### `yarn start`
+## Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Clone the repository
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  ```
+    git clone https://github.com/sahil-shubham/puny-sql-editor.git
+  ```
 
-### `yarn build`
+- Install all the dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ```
+    yarn
+  ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Make a copy of `.env.template` and fill your supabase tokens (mostly safe for public view, read [here](https://supabase.io/docs/guides/api#api-url-and-keys)):
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ```
+    cp .env.template .env
+  ```
+
+- Run the development server
+
+  ```
+    yarn start
+  ```
+
+  Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits. The linting is handled by husky before every commit.
+
+## Possible features
+
+This uses supabase for storing tables, you
+
+- This can be used to share specific tables
+
+## Shortcomings
+
+This project focuses mostly on the frontend side of an SQL Editor, ignoring and/or circumnavigating the need of a backend whenever needed.
+You are free to fork and improve this project to your liking.
+
+- This doesn't do any SQL parsing
+- This doesn't have any backend
