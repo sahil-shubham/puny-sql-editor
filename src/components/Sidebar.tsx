@@ -1,5 +1,5 @@
 import React from "react";
-import { Database, Home, Settings, Terminal } from "react-feather";
+import { Database, Home, Terminal } from "react-feather";
 import styled from "styled-components";
 
 //----------------Styled Components---------------
@@ -7,6 +7,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 
   max-height: 95vh;
@@ -14,6 +15,8 @@ const Container = styled.div`
   top: 1rem;
 
   margin: 1rem;
+  border-radius: 10px;
+  background-color: #14191f;
 `;
 
 const List = styled.ul`
@@ -25,16 +28,27 @@ const List = styled.ul`
   padding: 0;
 `;
 
+const Icon = styled.svg`
+  margin: 1rem;
+  color: #969799;
+`;
+
 const ListItem = styled.li`
   display: flex;
   align-items: center;
   white-space: nowrap;
 
-  margin: 1rem 0;
-`;
+  margin: 1rem;
+  cursor: pointer;
+  border-radius: 10px;
 
-const Icon = styled.svg`
-  margin: 0 0.5rem 0 0;
+  &:hover {
+    background-color: #5f6164;
+
+    ${Icon} {
+      color: #f5f5f5;
+    }
+  }
 `;
 
 //================================================
@@ -44,19 +58,17 @@ function Sidebar() {
     <Container>
       <List>
         <ListItem>
-          <Icon as={Home} /> Home
+          <Icon as={Home} />
         </ListItem>
 
         <ListItem>
-          <Icon as={Database} /> Tables
+          <Icon as={Database} />
         </ListItem>
 
         <ListItem>
-          <Icon as={Terminal} /> SQL
+          <Icon as={Terminal} />
         </ListItem>
       </List>
-
-      <Icon as={Settings} />
     </Container>
   );
 }
