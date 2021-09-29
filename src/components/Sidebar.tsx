@@ -16,7 +16,8 @@ const Container = styled.div`
 
   margin: 1rem;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.sidebar.backgroundColor};
+  box-shadow: 0px 0px 2px ${(props) => props.theme.sidebar.hoverBackground};
 `;
 
 const List = styled.ul`
@@ -30,7 +31,7 @@ const List = styled.ul`
 
 const Icon = styled.svg`
   margin: 1rem;
-  color: #969799;
+  color: ${(props) => props.theme.sidebar.color};
 `;
 
 const ListItem = styled.li`
@@ -43,14 +44,14 @@ const ListItem = styled.li`
   padding: 0.25rem;
   cursor: pointer;
   border-radius: 10px;
-  color: #969799;
+  color: ${(props) => props.theme.sidebar.color};
 
   &:hover {
-    background-color: #5f6164;
-    color: #f5f5f5;
+    background-color: ${(props) => props.theme.sidebar.hoverBackground};
+    color: ${(props) => props.theme.sidebar.hoverColor};
 
     ${Icon} {
-      color: #f5f5f5;
+      color: ${(props) => props.theme.sidebar.hoverColor};
     }
   }
 `;
@@ -63,10 +64,11 @@ const NestedList = styled.ul`
   left: 2rem;
 
   list-style-type: none;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 
   border-radius: 10px;
-  background-color: #14191f;
+  background-color: ${(props) => props.theme.sidebar.backgroundColor};
+  box-shadow: 0px 0px 5px ${(props) => props.theme.sidebar.hoverBackground};
 
   ${ListItem} {
     margin: 0.5rem 0.25rem;
@@ -83,10 +85,10 @@ const ThemeChanger = styled.div`
   margin: 1rem;
   padding: 0.1rem;
   cursor: pointer;
-  box-shadow: 0px 0px 10px #e8e8e8;
+  box-shadow: 0px 0px 10px ${(props) => props.theme.sidebar.hoverBackground};
 
   svg {
-    color: #14191f;
+    color: ${(props) => props.theme.sidebar.color};
   }
 `;
 //================================================
