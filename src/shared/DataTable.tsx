@@ -4,17 +4,36 @@ import { Product, Shipper, Supplier } from "../types";
 
 //-----------Styled Components------------------
 
-const Table = styled.table``;
+const Table = styled.table`
+  background-color: ${(props) => props.theme.sidebar.backgroundColor};
+  border-radius: 10px;
 
-const HeaderContainer = styled.thead``;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+`;
 
-const Header = styled.th``;
+const HeaderContainer = styled.thead`
+  background-color: ${(props) => props.theme.sidebar.hoverBackground};
 
-const BodyContainer = styled.tbody``;
+  tr {
+    th {
+      padding: 0.5rem;
+    }
+  }
+`;
 
-const Row = styled.tr``;
+const BodyContainer = styled.tbody`
+  padding: 1rem;
 
-const Cell = styled.td``;
+  tr {
+    td {
+      padding: 0.5rem;
+    }
+    &:nth-of-type(even) {
+      background-color: ${(props) => props.theme.sidebar.hoverBackground};
+    }
+  }
+`;
 
 //==============================================
 
