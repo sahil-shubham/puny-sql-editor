@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import QueryRunner from "../components/QueryRunner";
 import supabase from "../components/supabase";
 import DataTable from "../shared/DataTable";
 import { Product } from "../types";
@@ -9,7 +10,7 @@ function MainArea() {
   useEffect(() => {
     async function getTable() {
       try {
-        const { data } = await supabase.from("products").select();
+        const { data } = await supabase.from("products").select("*");
 
         if (data) {
           setData(data);
@@ -25,6 +26,7 @@ function MainArea() {
   return (
     <div>
       <DataTable data={data} />
+      <QueryRunner />
     </div>
   );
 }
