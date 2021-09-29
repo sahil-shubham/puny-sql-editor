@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import QueryRunner from "../components/QueryRunner";
 import supabase from "../components/supabase";
 import DataTable from "../shared/DataTable";
+import { Heading, Title } from "../shared/Typography";
 import { Product, Shipper, Supplier } from "../types";
+
+//-----------------Styled Components--------------------
+
+const Container = styled.div`
+  margin: 1rem;
+`;
+
+//======================================================
 
 function MainArea({
   tableName,
@@ -30,10 +40,13 @@ function MainArea({
   }, [tableName]);
 
   return (
-    <div>
+    <Container>
+      <Title> Dashboard </Title>
+      <Heading> {tableName} table </Heading>
+
       <DataTable data={data} />
       {showQueryRunner && <QueryRunner />}
-    </div>
+    </Container>
   );
 }
 

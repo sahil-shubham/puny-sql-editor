@@ -17,7 +17,7 @@ const Container = styled.div`
   margin: 1rem;
   border-radius: 10px;
   background-color: ${(props) => props.theme.sidebar.backgroundColor};
-  box-shadow: 0px 0px 2px ${(props) => props.theme.sidebar.hoverBackground};
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 `;
 
 const List = styled.ul`
@@ -68,7 +68,7 @@ const NestedList = styled.ul`
 
   border-radius: 10px;
   background-color: ${(props) => props.theme.sidebar.backgroundColor};
-  box-shadow: 0px 0px 5px ${(props) => props.theme.sidebar.hoverBackground};
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
   ${ListItem} {
     margin: 0.5rem 0.25rem;
@@ -85,7 +85,7 @@ const ThemeChanger = styled.div`
   margin: 1rem;
   padding: 0.1rem;
   cursor: pointer;
-  box-shadow: 0px 0px 10px ${(props) => props.theme.sidebar.hoverBackground};
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
   svg {
     color: ${(props) => props.theme.sidebar.color};
