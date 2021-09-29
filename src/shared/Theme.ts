@@ -10,9 +10,14 @@ export const lightTheme: ThemeType = {
     hoverColor: "#2b2f33",
     themeSwitcherBackground: "#b4e4c9",
   },
+
   button: {
     backgroundColor: "#b4e4c9",
     color: "#111",
+  },
+
+  table: {
+    headerColor: "#111",
   },
 };
 
@@ -33,6 +38,10 @@ export const darkTheme: ThemeType = {
     backgroundColor: "#b4e4c9",
     color: "#111",
   },
+
+  table: {
+    headerColor: "#111",
+  },
 };
 
 type ThemeType = {
@@ -52,6 +61,10 @@ type ThemeType = {
   button: {
     backgroundColor: string;
     color: string;
+  };
+
+  table: {
+    headerColor: string;
   };
 };
 

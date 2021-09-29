@@ -13,7 +13,8 @@ const Table = styled.table`
 `;
 
 const HeaderContainer = styled.thead`
-  background-color: ${(props) => props.theme.sidebar.hoverBackground};
+  background-color: ${(props) => props.theme.sidebar.themeSwitcherBackground};
+  color: ${(props) => props.theme.table.headerColor};
 
   tr {
     th {
