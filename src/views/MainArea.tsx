@@ -45,7 +45,7 @@ function MainArea({
       <Heading> {tableName} table </Heading>
 
       <DataTable data={data} />
-      {showQueryRunner && <QueryRunner />}
+      <QueryRunner show={showQueryRunner} />
     </Container>
   );
 }
