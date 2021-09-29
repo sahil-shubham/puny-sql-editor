@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Database, Home, Terminal } from "react-feather";
+import { Database, Home, Moon, Sun, Terminal } from "react-feather";
 import styled from "styled-components";
 
 //----------------Styled Components---------------
@@ -73,6 +73,22 @@ const NestedList = styled.ul`
     padding: 0.5rem 1rem;
   }
 `;
+
+const ThemeChanger = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  margin: 1rem;
+  padding: 0.1rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px #e8e8e8;
+
+  svg {
+    color: #14191f;
+  }
+`;
 //================================================
 
 const tables = [
@@ -92,11 +108,15 @@ function Sidebar({
   setSelectedTable,
   showQueryRunner,
   setShowQueryRunner,
+  theme,
+  setTheme,
 }: {
   selectedTable: string;
   setSelectedTable: (e: string) => void;
   showQueryRunner: boolean;
   setShowQueryRunner: (e: boolean) => void;
+  theme: string;
+  setTheme: (e: string) => void;
 }) {
   const [showDropdown, setShowDropdown] = useState(false);
   return (
@@ -126,6 +146,12 @@ function Sidebar({
           )}
         </ListItem>
       </List>
+
+      <ThemeChanger
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      >
+        {theme === "light" ? <Icon as={Sun} /> : <Icon as={Moon} />}
+      </ThemeChanger>
     </Container>
   );
 }

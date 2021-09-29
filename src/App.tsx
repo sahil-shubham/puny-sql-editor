@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import Sidebar from "./components/Sidebar";
 import GlobalStyles from "./shared/GlobalStyles";
-import Theme from "./shared/Theme";
+import { darkTheme, lightTheme } from "./shared/Theme";
 import MainArea from "./views/MainArea";
 
 //----------Styled Components------------
@@ -19,10 +19,11 @@ const AppContainer = styled.div`
 function App() {
   const [selectedTable, setSelectedTable] = useState("products");
   const [showQueryRunner, setShowQueryRunner] = useState(false);
+  const [theme, setTheme] = useState("light");
 
   return (
     <Router>
-      <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <AppContainer>
           <GlobalStyles />
           <Sidebar
@@ -30,6 +31,8 @@ function App() {
             setSelectedTable={setSelectedTable}
             showQueryRunner={showQueryRunner}
             setShowQueryRunner={setShowQueryRunner}
+            theme={theme}
+            setTheme={setTheme}
           />
 
           <Switch>
