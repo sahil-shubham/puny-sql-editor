@@ -110,7 +110,7 @@ const Expander = styled.div`
 
   position: absolute;
   right: -0.8rem;
-  top: 6%;
+  top: 3.5rem;
 
   cursor: pointer;
   border-radius: 50%;
