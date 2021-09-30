@@ -10,6 +10,7 @@ const Table = styled.table`
 
   border-collapse: collapse;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 `;
 
 const HeaderContainer = styled.thead`
