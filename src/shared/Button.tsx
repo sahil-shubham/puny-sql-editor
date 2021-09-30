@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { ThemeType } from "./Theme";
 
 const Button = styled.button<{ theme: ThemeType }>`
+  display: flex;
+  align-items: center;
   background-color: ${(props) => props.theme.button.backgroundColor};
   color: ${(props) => props.theme.button.color};
 
