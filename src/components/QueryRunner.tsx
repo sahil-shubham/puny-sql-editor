@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Loader } from "react-feather";
 import styled, { keyframes } from "styled-components";
 import Button from "../shared/Button";
@@ -87,6 +87,11 @@ function QueryRunner({
   loading: boolean;
 }) {
   const [unfinishedQuery, setUnfinishedQuery] = useState(query);
+
+  useEffect(() => {
+    setUnfinishedQuery(query);
+  }, [query]);
+
   return (
     <Container show={show}>
       <TextArea
