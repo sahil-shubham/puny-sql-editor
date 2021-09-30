@@ -39,6 +39,7 @@ function App() {
             <Route exact path="/">
               <MainArea
                 tableName={selectedTable}
+                setSelectedTable={setSelectedTable}
                 showQueryRunner={showQueryRunner}
               />
             </Route>

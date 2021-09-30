@@ -16,27 +16,54 @@ const Container = styled.div`
 
 function MainArea({
   tableName,
+  setSelectedTable,
   showQueryRunner,
 }: {
   tableName: string;
+  setSelectedTable: (e: string) => void;
   showQueryRunner: boolean;
 }) {
   const [data, setData] = useState<Product[] | Shipper[] | Supplier[]>([]);
+  const [query, setQuery] = useState(`SELECT * FROM ${tableName} ;`);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getTable() {
-      try {
-        const { data } = await supabase.from(tableName).select("*");
+    async function punyQueryParser(qString: string) {
+      let matches = qString.match(
+        /select\s+(.*)\sfrom\s(.*)\s(where (.*)=(.*))?\s*;/i
+      );
 
-        if (data) {
-          setData(data);
+      try {
+        if (matches !== null) {
+          let response;
+          if (matches[3] === undefined) {
+            response = await supabase.from(matches[2]).select(matches[1]);
+          } else {
+            response = await supabase
+              .from(matches[2])
+              .select(matches[1])
+              .eq(matches[4], matches[5]);
+          }
+
+          setLoading(true);
+          setSelectedTable(matches[2].split(" ")[0]);
+
+          if (response.data) {
+            setData(response.data);
+          }
         }
       } catch (error) {
         console.log("error", error);
       }
+      console.log(matches);
+      setLoading(false);
     }
 
-    getTable();
+    punyQueryParser(query);
+  }, [query]);
+
+  useEffect(() => {
+    setQuery(`SELECT * FROM ${tableName} ;`);
   }, [tableName]);
 
   return (
@@ -45,7 +72,12 @@ function MainArea({
       <Heading> {tableName} table </Heading>
 
       <DataTable data={data} />
-      <QueryRunner show={showQueryRunner} />
+      <QueryRunner
+        show={showQueryRunner}
+        query={query}
+        setQuery={setQuery}
+        loading={loading}
+      />
     </Container>
   );
 }

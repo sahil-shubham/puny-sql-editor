@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Loader } from "react-feather";
 import styled, { keyframes } from "styled-components";
 import Button from "../shared/Button";
 
@@ -58,13 +59,46 @@ const RunButton = styled(Button)`
   right: 1rem;
 `;
 
+const load = keyframes`
+  0%{
+    transform: rotate(0deg)
+  }
+
+  100%{
+    transform: rotate(360deg)
+  }
+`;
+
+const Spinner = styled.svg`
+  animation: 1s ${load} infinite;
+`;
+
 //================================================
 
-function QueryRunner({ show }: { show: boolean }) {
+function QueryRunner({
+  show,
+  query,
+  setQuery,
+  loading,
+}: {
+  show: boolean;
+  query: string;
+  setQuery: (e: string) => void;
+  loading: boolean;
+}) {
+  const [unfinishedQuery, setUnfinishedQuery] = useState(query);
   return (
     <Container show={show}>
-      <TextArea placeholder="Write Queries here" rows={5} autoFocus />
-      <RunButton> Run Query</RunButton>
+      <TextArea
+        value={unfinishedQuery}
+        onChange={(e) => setUnfinishedQuery(e.target.value)}
+        placeholder="Write Queries here"
+        rows={5}
+        autoFocus
+      />
+      <RunButton onClick={() => setQuery(unfinishedQuery)}>
+        Run Query {loading && <Spinner as={Loader} />}
+      </RunButton>
     </Container>
   );
 }
