@@ -40,9 +40,11 @@ The page will reload if you make edits. The linting is handled by husky before e
 
 ## Possible features
 
-This uses supabase for storing tables, you
+This uses supabase for storing tables. 
 
-- This can be used to share specific tables
+- This can be used to share specific tables of a database
+- The shared tables are updated in real time and don't go old as a normal csv
+- Some specific SQL Queries can be permitted to run to make filtering data on logic easier
 
 ## Shortcomings
 
