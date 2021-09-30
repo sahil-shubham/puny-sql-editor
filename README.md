@@ -7,12 +7,14 @@ A SQL Editor worthy of its name, it's puny.
 ```
   NOTE: This project was made as a frontend interview task
 ```
+
 ## Try it out
-This repository has been deployed to Netlify and can be visited [here](https://puny-sql-editor.netlify.app/). 
 
-Data for tables have been obtained from [here](https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind/data/csv) and queries of following formats should work: 
+This repository has been deployed to Netlify and can be visited [here](https://puny-sql-editor.netlify.app/).
 
-- SELECT a,b,c from d ; 
+Data for tables have been obtained from [here](https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind/data/csv) and queries of following formats should work:
+
+- SELECT a,b,c from d ;
 - select a,b,c from d where e=f;
 
 ```
@@ -51,7 +53,7 @@ The page will reload if you make edits. The linting is handled by husky before e
 
 ## Possible features
 
-This uses supabase for storing tables. 
+This uses supabase for storing tables.
 
 - This can be used to share specific tables of a database
 - The shared tables are updated in real time and don't go old as a normal csv
@@ -64,3 +66,7 @@ You are free to fork and improve this project to your liking.
 
 - This doesn't do any SQL parsing
 - This doesn't have any backend
+
+### Misc
+
+Didn't feel any need for optimizing page load time, due to it being around 0.6s. The results were obtained from Lighthouse report visible [here](https://puny-sql-editor.netlify.app/lighthouse-report.html).
