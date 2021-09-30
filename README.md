@@ -7,6 +7,17 @@ A SQL Editor worthy of its name, it's puny.
 ```
   NOTE: This project was made as a frontend interview task
 ```
+## Try it out
+This repository has been deployed to Netlify and can be visited [here](https://puny-sql-editor.netlify.app/). 
+
+Data for tables have been obtained from [here](https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind/data/csv) and queries of following formats should work: 
+
+- SELECT a,b,c from d ; 
+- select a,b,c from d where e=f;
+
+```
+NOTE: Mind the space between semicolon in SELECT statements without WHERE clause
+```
 
 ## Setup
 
