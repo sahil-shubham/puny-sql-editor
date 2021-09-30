@@ -36,6 +36,8 @@ function MainArea({
       try {
         if (matches !== null) {
           let response;
+
+          // Check if a "WHERE" clause has been used or not
           if (matches[3] === undefined) {
             response = await supabase.from(matches[2]).select(matches[1]);
           } else {
@@ -46,7 +48,7 @@ function MainArea({
           }
 
           setLoading(true);
-          setSelectedTable(matches[2].split(" ")[0]);
+          setSelectedTable(matches[2]);
 
           if (response.data) {
             setData(response.data);
@@ -55,7 +57,6 @@ function MainArea({
       } catch (error) {
         console.log("error", error);
       }
-      console.log(matches);
       setLoading(false);
     }
 
