@@ -25,7 +25,7 @@ const HeaderContainer = styled.thead`
 `;
 
 const BodyContainer = styled.tbody`
-  padding: 1rem;
+  text-align: center;
 
   tr {
     td {
